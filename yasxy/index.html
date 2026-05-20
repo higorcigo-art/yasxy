@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Hello Kitty: Yasmin Specian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Configurações Gerais e Cores */
+        :root {
+            --rosa-principal: #FFB7C5;
+            --rosa-escuro: #FF6B8B;
+            --rosa-claro: #FFF0F2;
+            --rosa-glow: rgba(255, 107, 139, 0.4);
+            --branco: #FFFFFF;
+            --texto: #5A4B4E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--rosa-claro) 0%, #FFE3E8 100%);
+            font-family: 'Quicksand', sans-serif;
+            color: var(--texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fundo de Nuvens Animadas */
+        .nuvens {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Efeito de Chuva de Elementos */
+        .falling-item {
+            position: absolute;
+            top: -50px;
+            pointer-events: none;
+            z-index: 2;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Container Principal */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            z-index: 3;
+        }
+
+        header h1 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--rosa-escuro);
+            font-size: 2rem;
+            text-shadow: 3px 3px 0px var(--branco);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* O Card de Mensagem */
+        .card {
+            background: var(--branco);
+            border: 4px solid var(--rosa-principal);
+            outline: 4px solid var(--branco);
+            border-radius: 40px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px var(--rosa-glow), inset 0 0 20px rgba(255, 183, 197, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .hello-kitty-avatar {
+            margin-top: -5px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            animation: flutuar 2.5s ease-in-out infinite;
+        }
+
+        .card h2 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--rosa-escuro);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .mensagem {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #635255;
+            margin-bottom: 25px;
+            font-weight: 500;
+            text-align: justify;
+        }
+
+        .mensagem span {
+            color: var(--rosa-escuro);
+            font-weight: 700;
+        }
+
+        /* Divisória fofa */
+        .decoracao-linha {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .linha {
+            height: 3px;
+            width: 50px;
+            background: var(--rosa-principal);
+            border-radius: 2px;
+        }
+
+        .coracao-central {
+            color: var(--rosa-escuro);
+            font-size: 1.3rem;
+            animation: batimento 1.2s infinite;
+        }
+
+        /* Rodapé */
+        footer {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: var(--rosa-escuro);
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 0 var(--branco);
+        }
+
+        /* Animações */
+        @keyframes flutuar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes batimento {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nuvens" id="nuvensContainer"></div>
+
+    <div class="container">
+        <header>
+            <h1>Para: Yasmin Specian</h1>
+        </header>
+
+        <main class="card">
+            <div class="hello-kitty-avatar">
+                <svg viewBox="0 0 110 90" width="140" height="115">
+                    <path d="M 22 26 C 14 16, 26 2, 38 12" fill="white" stroke="#333" stroke-width="3.5"
+                        stroke-linecap="round" />
+                    <path d="M 72 12 C 84 2, 96 16, 88 26" fill="white" stroke="#333" stroke-width="3.5"
+                        stroke-linecap="round" />
+                    <ellipse cx="55" cy="45" rx="43" ry="31" fill="white" stroke="#333" stroke-width="3.5" />
+
+                    <ellipse cx="55" cy="45" rx="43" ry="31" fill="white" />
+
+                    <g transform="translate(68, 12)">
+                        <ellipse cx="-10" cy="4" rx="11" ry="9" fill="#FF1A5E" stroke="#333" stroke-width="3.5"
+                            transform="rotate(-15, -10, 4)" />
+                        <ellipse cx="10" cy="4" rx="11" ry="9" fill="#FF1A5E" stroke="#333" stroke-width="3.5"
+                            transform="rotate(15, 10, 4)" />
+                        <circle cx="0" cy="4" r="7" fill="#FF1A5E" stroke="#333" stroke-width="3.5" />
+                    </g>
+
+                    <ellipse cx="36" cy="47" rx="3.5" ry="5" fill="#333" />
+                    <ellipse cx="74" cy="47" rx="3.5" ry="5" fill="#333" />
+
+                    <ellipse cx="55" cy="54" rx="5" ry="3.5" fill="#FFD11A" stroke="#333" stroke-width="1.5" />
+
+                    <path d="M 17 46 L 4 45 M 16 52 L 2 53 M 18 58 L 5 61" stroke="#333" stroke-width="3"
+                        stroke-linecap="round" />
+                    <path d="M 93 46 L 106 45 M 94 52 L 108 53 M 92 58 L 105 61" stroke="#333" stroke-width="3"
+                        stroke-linecap="round" />
+
+                    <ellipse cx="26" cy="54" rx="4" ry="2.5" fill="#FFB7C5" opacity="0.6" />
+                    <ellipse cx="84" cy="54" rx="4" ry="2.5" fill="#FFB7C5" opacity="0.6" />
+                </svg>
+            </div>
+
+            <h2>Você é o meu pedacinho mais lindo do universo! </h2>
+
+            <p class="mensagem">
+                Yasmin, preparei esse espaço para que você saiba que, não importa onde você esteja, sempre haverá um
+                lugarzinho feito exclusivamente para celebrar você. Do mesmo jeito que a <span>Hello Kitty</span> torna
+                o mundo mais doce, calmo e acolhedor, você faz isso com a minha vida inteira. Estar com você é ter a
+                certeza de que os dias cinzentos sempre ganham a cor mais bonita. Obrigado por iluminar meus caminhos,
+                rir das minhas bobagens e ser a namorada mais incrível e perfeita que eu poderia sonhar. Meu coração é e
+                sempre será todinho seu!
+            </p>
+
+            <div class="decoracao-linha">
+                <div class="linha"></div>
+                <div class="coracao-central">♥</div>
+                <div class="linha"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Feito com todo o amor do mundo pra Você </p>
+        </footer>
+    </div>
+
+    <script>
+        // Chuva dinâmica de elementos fofos no fundo
+        const container = document.getElementById('nuvensContainer');
+
+        // Elementos que vão cair
+        const kittyFace = `<svg viewBox="0 0 100 80" width="28" height="22"><ellipse cx="50" cy="45" rx="40" ry="30" fill="white" stroke="#FF6B8B" stroke-width="4" /><ellipse cx="33" cy="45" rx="3.5" ry="4.5" fill="#5A4B4E" /><ellipse cx="67" cy="45" rx="3.5" ry="4.5" fill="#5A4B4E" /><ellipse cx="50" cy="53" rx="4.5" ry="3" fill="#FFD11A" /></svg>`;
+        const miniBow = `<svg viewBox="0 0 60 40" width="24" height="17"><circle cx="30" cy="20" r="8" fill="#FF1A5E" /><path d="M 12 8 C 12 8, 2 20, 22 28 Z" fill="#FF1A5E" /><path d="M 48 8 C 48 8, 58 20, 38 28 Z" fill="#FF1A5E" /></svg>`;
+        const heart = `<span style="color: #FF6B8B; font-size: 22px; font-family: sans-serif;">♥</span>`;
+
+        const types = [kittyFace, miniBow, heart];
+
+        function createFallingItem() {
+            const item = document.createElement('div');
+            item.className = 'falling-item';
+            item.innerHTML = types[Math.floor(Math.random() * types.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+
+            const scale = Math.random() * 0.5 + 0.7;
+            item.style.transform = `scale(${scale})`;
+
+            const duration = Math.random() * 4 + 4;
+            item.style.animationDuration = duration + 's';
+            item.style.animationDelay = Math.random() * 2 + 's';
+
+            container.appendChild(item);
+
+            setTimeout(() => {
+                item.remove();
+            }, (duration + 2) * 1000);
+        }
+
+        setInterval(createFallingItem, 450);
+
+        for (let i = 0; i < 8; i++) {
+            createFallingItem();
+        }
+    </script>
+</body>
+
+</html>
